@@ -8,7 +8,7 @@ module Spree
     preference :solution, :string, default: 'Mark'
     preference :landing_page, :string, default: 'Billing'
     preference :logourl, :string, default: ''
-    preference :brand_name, :string, default: ''
+    preference :brand_name, :string, default: 'Bodyboss'
 
     def supports?(source)
       true
