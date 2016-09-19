@@ -95,6 +95,7 @@ module Spree
           :SolutionType => payment_method.preferred_solution.present? ? payment_method.preferred_solution : "Mark",
           :LandingPage => payment_method.preferred_landing_page.present? ? payment_method.preferred_landing_page : "Billing",
           :cppheaderimage => payment_method.preferred_logourl.present? ? payment_method.preferred_logourl : "",
+          :BrandName => payment_method.preferred_brand_name.present? ? payment_method.preferred_brand_name : "",
           :NoShipping => 1,
           :PaymentDetails => [payment_details(items)]
       }}
