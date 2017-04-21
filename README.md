@@ -1,22 +1,18 @@
 # Spree PayPal Express
 
-[![Build Status](https://travis-ci.org/spree-contrib/better_spree_paypal_express.svg?branch=master)](https://travis-ci.org/spree-contrib/better_spree_paypal_express)
+[![Build Status](https://travis-ci.org/spree-contrib/better_spree_paypal_express.svg?branch=3-0-stable)](https://travis-ci.org/spree-contrib/better_spree_paypal_express)
 
-This is the official Paypal Express extension for Spree. 
-
-For Spree 3.0+ it is recommended to use [Braintree v.zero extension](https://github.com/spree-contrib/spree_braintree_vzero) which uses a newer PayPal API and actually supports Express Checkout flow. 
+This is a "re-do" of the official [spree_paypal_express][4] extension. The old extension is extremely hard to maintain and complex.
 
 Behind-the-scenes, this extension uses [PayPal's Merchant Ruby SDK](https://github.com/paypal/merchant-sdk-ruby).
 
 ## Installation
 
 1. Add this extension to your Gemfile with this line:
-        ```ruby
-        gem 'spree_paypal_express', github: 'spree-contrib/better_spree_paypal_express', branch: 'X-X-stable'
-        ```
-        
-        The `branch` option is important: it must match the version of Spree you're using.
-        For example, use `3-0-stable` if you're using Spree `3-0-stable` or any `3.0.x` version.
+
+        gem 'spree_paypal_express', github: 'spree-contrib/better_spree_paypal_express', branch: '3-0-stable'
+
+The `branch` option is important: it must match the version of Spree you're using. Use 3-0-stable if you're using Spree 3-0-stable or any 3.0.x version.
 
 2. Install the gem using Bundler:
 
@@ -28,7 +24,7 @@ Behind-the-scenes, this extension uses [PayPal's Merchant Ruby SDK](https://gith
 
 4. Restart your server
 
-        If your server was running, restart it so that it can find the assets properly.
+If your server was running, restart it so that it can find the assets properly.
 
 ### Sandbox Setup
 
@@ -130,8 +126,9 @@ Starting point:
 * Ensure specs pass by running `bundle exec rspec spec`
 * Submit your pull request
 
-Copyright (c) 2013-2016 Spree Commerce and contributors, released under the [New BSD License][3]
+Copyright (c) 2013-2015 Spree Commerce and contributors, released under the [New BSD License][3]
 
 [1]: http://www.fsf.org/licensing/essays/free-sw.html
 [2]: https://github.com/spree/better_spree_paypal_express/issues
 [3]: https://github.com/spree/better_spree_paypal_express/tree/master/LICENSE.md
+[4]: https://github.com/spree/spree_paypal_express

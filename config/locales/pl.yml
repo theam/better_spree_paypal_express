@@ -4,9 +4,9 @@ pl:
     paypal:
       already_refunded: "Ta płatność została zwrócona i nie można wykonywać na niej kolejnych akcji"
       no_payment_via_admin_backend: "Aktualnie nie można obciążać konto PayPal z poziomu panelu administracyjnego."
-      transaction: "Transakcja PayPal"
+      transaction: "Tranzakcja PayPal"
       payer_id: "Identyfikator Płatnika"
-      transaction_id: "Identyfikator Transakcji"
+      transaction_id: "Identyfikator Tranzakcji"
       token: "Token"
       refund: "Zwrot"
       refund_amount: "Kwota zwrotu"
@@ -16,6 +16,6 @@ pl:
       actions:
         refund: "Zwróć Płatność"
       flash:
-        cancel: "Nie chcesz użyć PayPal? Nie ma problemu."
+        cancel: "Nie chceż użyć PayPal? Nie ma problemu."
         connection_failed: "Nie można było połączyć się z usługą PayPal."
-        generic_error: "Transakcja PayPal nie powiodła się. %{reasons}"
+        generic_error: "Tranzakcja PayPal nie powiodła się. %{reasons}"
