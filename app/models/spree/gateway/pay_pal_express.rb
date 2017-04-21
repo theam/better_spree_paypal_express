@@ -10,6 +10,11 @@ module Spree
     preference :logourl, :string, default: ''
     preference :brand_name, :string, default: 'Bodyboss'
 
+    def credit(credit_cents, response_code, _gateway_options)
+      payment = Spree::Payment.find_by(response_code: response_code)
+      refund(payment, credit_cents)
+    end
+
     def supports?(source)
       true
     end
@@ -56,6 +61,7 @@ module Spree
         # This is mainly so we can use it later on to refund the payment if the user wishes.
         transaction_id = pp_response.do_express_checkout_payment_response_details.payment_info.first.transaction_id
         express_checkout.update_column(:transaction_id, transaction_id)
+        Spree::Payment.find_by(source: express_checkout).update_columns(response_code: transaction_id)
         # This is rather hackish, required for payment/processing handle_response code.
         Class.new do
           def success?; true; end
@@ -72,6 +78,7 @@ module Spree
     end
 
     def refund(payment, amount)
+      amount = amount / 100
       refund_type = payment.amount == amount.to_f ? "Full" : "Partial"
       refund_transaction = provider.build_refund_transaction({
         :TransactionID => payment.source.transaction_id,
@@ -97,6 +104,11 @@ module Spree
           :response_code => refund_transaction_response.RefundTransactionID,
           :state => 'completed'
         )
+        # This is rather hackish, required for payment/processing handle_response code.
+        class << refund_transaction_response
+          def success?; true; end
+          def authorization; refund_transaction_id end
+        end
       end
       refund_transaction_response
     end
