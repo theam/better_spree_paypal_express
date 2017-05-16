@@ -78,7 +78,7 @@ module Spree
     end
 
     def refund(payment, amount)
-      amount = amount / 100
+      amount /= 100.0
       refund_type = payment.amount == amount.to_f ? "Full" : "Partial"
       refund_transaction = provider.build_refund_transaction({
         :TransactionID => payment.source.transaction_id,
