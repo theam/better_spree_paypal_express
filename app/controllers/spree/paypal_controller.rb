@@ -15,7 +15,7 @@ module Spree
           :Name => adjustment.label,
           :Quantity => 1,
           :Amount => {
-            :currencyID => order.currency,
+            :currencyID => order.normalized_currency,
             :value => adjustment.amount
           }
         }
@@ -79,7 +79,7 @@ module Spree
           :Number => item.variant.sku,
           :Quantity => item.quantity,
           :Amount => {
-              :currencyID => item.order.currency,
+              :currencyID => item.order.normalized_currency,
               :value => item.price
           },
           :ItemCategory => "Physical"
@@ -124,26 +124,26 @@ module Spree
         # This results in the order summary being simply "Current purchase"
         {
           :OrderTotal => {
-            :currencyID => current_order.currency,
+            :currencyID => current_order.normalized_currency,
             :value => current_order.total
           }
         }
       else
         {
           :OrderTotal => {
-            :currencyID => current_order.currency,
+            :currencyID => current_order.normalized_currency,
             :value => current_order.total
           },
           :ItemTotal => {
-            :currencyID => current_order.currency,
+            :currencyID => current_order.normalized_currency,
             :value => item_sum
           },
           :ShippingTotal => {
-            :currencyID => current_order.currency,
+            :currencyID => current_order.normalized_currency,
             :value => shipment_sum,
           },
           :TaxTotal => {
-            :currencyID => current_order.currency,
+            :currencyID => current_order.normalized_currency,
             :value => current_order.additional_tax_total
           },
           :ShipToAddress => address_options,
