@@ -84,7 +84,7 @@ module Spree
         :TransactionID => payment.source.transaction_id,
         :RefundType => refund_type,
         :Amount => {
-          :currencyID => payment.currency,
+          :currencyID => payment.order.normalized_currency,
           :value => amount },
         :RefundSource => "any" })
       refund_transaction_response = provider.refund_transaction(refund_transaction)
